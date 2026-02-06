@@ -65,7 +65,7 @@ The project is organized into **three experimental modules**.
 
 **Important: run in the following order**
 
-1. **Pre-processing (must run first)**
+1. **Pre-processing (run first)**
    - `data_process.ipynb`
    - This step generates processed predictions / training data / test data used by the main analysis.
 
