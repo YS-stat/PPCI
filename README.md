@@ -1,7 +1,7 @@
 # PPCI: Prediction-Powered Conditional Inference
 
 This repository contains the implementation of **Prediction-Powered Conditional Inference (PPCI)**.
-PPCI enables valid uncertainty quantification for **conditional functionals** (e.g., conditional means and quantiles)
+PPCI enables valid uncertainty quantification for **conditional functionals** (e.g., conditional means)
 in settings with **scarce labeled data**, **rich ublabeled data**,  and an available **black-box predictor**.
 
 ---
