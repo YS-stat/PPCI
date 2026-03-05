@@ -2,7 +2,7 @@
 
 This repository contains the implementation of **Prediction-Powered Conditional Inference (PPCI)**.
 PPCI enables valid uncertainty quantification for **conditional functionals** (e.g., conditional means)
-in settings with **scarce labeled data**, **rich ublabeled data**,  and an available **black-box predictor**.
+in settings with **scarce labeled data**, **rich unlabeled data**, and an available **black-box predictor**.
 
 ---
 
@@ -13,75 +13,66 @@ in settings with **scarce labeled data**, **rich ublabeled data**,  and an avail
 
 ---
 
-## Core Files (Root Directory)
+## Repository Structure
 
-The core logic for PPCI is implemented in:
+The project has been reorganized into two main independent directories based on the type of inference:
 
+1. `Conditional_mean_inference/`
+2. `Conditional_quantile_inference/`
+
+Each directory contains its own core functions, simulation scripts, and real-data applications.
+
+---
+
+## Part 1: Conditional Mean Inference
+
+All files for mean inference are located in the `Conditional_mean_inference/` directory.
+
+**Core File:**
 - `conditional_mean_functions.py` — base functions for conditional mean inference
+
+### 1) Simulation Experiments
+- **Notebook:** `simu_mean.ipynb`
+- **Outputs:** CSV results are saved to `./results/` and PDFs are generated in the root of this module.
+
+### 2) Census Income Data Analysis
+- **Location:** `./census_income_data/`
+- **Notebooks to run:** - `Income_data_mean.ipynb`
+  - `Income_data_different_unlabeled_sample_size.ipynb`
+- **Outputs:** CSV results and PDFs are saved to `./census_income_data/results/`
+
+### 3) BlogFeedback Data Analysis
+- **Location:** `./blogfeedback_data/`
+- **Important: run in the following order:**
+  1. **Pre-processing:** Run `data_process.ipynb` first. This step generates processed predictions, training data, and test data used by the main analysis.
+  2. **Main analysis:** Run `blogfeedback_data_mean.ipynb`
+- **Outputs:** CSV results and PDFs are saved to `./blogfeedback_data/results/`
+
+---
+
+## Part 2: Conditional Quantile Inference
+
+All files for quantile inference are located in the `Conditional_quantile_inference/` directory.
+
+**Core File:**
 - `conditional_quantile_functions.py` — base functions for conditional quantile inference
 
----
+### 1) Simulation Experiments
+- **Notebook to run:** `Simu_conditional_quantile_new.ipynb`
+- **Plotting (optional):** `plot_simu_qunatile.ipynb`
+- **Outputs:** CSV results are saved to `./results/` and PDFs (e.g., `simu_quantile_rmse_coverage_width_3x3.pdf`) are generated in the root of this module.
 
-## How to Run
-
-The project is organized into **three experimental modules**.
-
-### 1) Simulation Experiments (Root)
-
-**Notebooks to run**
-- `Simu_conditional_mean_new.ipynb`
-- `Simu_conditional_quantile_new.ipynb`
-
-**Plotting (optional)**
-- `plot_simu_mean_qunatile.ipynb`
-
-**Outputs**
-- CSV results are saved to: `./results/`
-- Figures/PDFs may be generated/updated in the root directory (e.g., `simu_*_3x3.pdf`)
-
----
-
-### 2) Census Income Data Analysis (`census_income_data/`)
-
-**Location**
-- `./census_income_data/`
-
-**Notebooks to run**
-- `Income_data_conditional_mean_new.ipynb`
-- `Income_data_conditional_quantile_new.ipynb`
-
-**Plotting (optional)**
-- `income_data_plot.ipynb`
-
-**Outputs**
-- CSV results are saved to: `./census_income_data/results/`
-
----
-
-### 3) BlogFeedback Data Analysis (`blogfeedback_data/`)
-
-**Location**
-- `./blogfeedback_data/`
-
-**Important: run in the following order**
-
-1. **Pre-processing (run first)**
-   - `data_process.ipynb`
-   - This step generates processed predictions / training data / test data used by the main analysis.
-
-2. **Main analysis**
-   - `Conditional_mean_blogfeedback_data_new.ipynb`
-
-**Plotting (optional)**
-- `blogfeedback_plot.ipynb`
-
-**Outputs**
-- CSV results are saved to: `./blogfeedback_data/results/`
+### 2) Census Income Data Analysis
+- **Location:** `./census_income_data/`
+- **Notebook to run:** `Income_data_conditional_quantile_new.ipynb`
+- **Plotting (optional):** `income_data_plot.ipynb`
+- **Outputs:** CSV results and PDFs are saved to `./census_income_data/results/`
 
 ---
 
 ## Output Locations Summary
 
-- Simulation: `./results/`
-- Census Income: `./census_income_data/results/`
-- BlogFeedback: `./blogfeedback_data/results/`
+Outputs are handled independently within their respective inference folders:
+- **Simulation:** `[Inference_Type]/results/`
+- **Census Income:** `[Inference_Type]/census_income_data/results/`
+- **BlogFeedback (Mean only):** `Conditional_mean_inference/blogfeedback_data/results/`
