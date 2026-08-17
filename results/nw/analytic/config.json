@@ -1,0 +1,39 @@
+{
+  "output_dir": "runs/formal_nw_analytic_latest",
+  "beta": 0.0,
+  "curvature": 4.0,
+  "sigma": 1.0,
+  "n": 200,
+  "N": 5000,
+  "b_values": [
+    0.0,
+    2.0
+  ],
+  "h_min": 0.05,
+  "h_max": 0.8,
+  "h_points": 120,
+  "slope_fraction": 0.4,
+  "slope_tolerance": 0.25,
+  "z_alpha": 1.959963984540054,
+  "sanity_checks": {
+    "wstar_moments": {
+      "E_wstar": 1.0,
+      "E_wstar_X": 0.0,
+      "E_wstar_X2": 0.0
+    },
+    "signed_references": {
+      "b=0": {
+        "var_lo": 0.02439285714285714,
+        "var_ppci": 0.011775714285714285,
+        "gain": 0.5172474377745242
+      },
+      "b=2": {
+        "var_lo": 0.030821428571428573,
+        "var_ppci": 0.012032857142857142,
+        "gain": 0.6095944380069525
+      }
+    }
+  },
+  "source_sha256": "548e586346542499cf7b0f68eeeccb7402e5b5564f1c68694128d5f31d977fe0",
+  "source_file_count": 32
+}

@@ -1,0 +1,48 @@
+{
+  "output_dir": "runs/formal_nw_quadratic_latest",
+  "seed": 24680,
+  "reps": 500,
+  "workers": 8,
+  "backend": "cpu",
+  "gpu_id": "auto",
+  "beta": 0.0,
+  "curvature": 4.0,
+  "sigma": 1.0,
+  "b_values": [
+    0.0,
+    2.0
+  ],
+  "n": 200,
+  "N": 5000,
+  "n_pilot": 200,
+  "kernel": "matern52",
+  "nw_h_min": 0.05,
+  "nw_h_max": 0.8,
+  "nw_h_grid_size": 35,
+  "undersmooth_delta": 0.05,
+  "localization_h_factors": [
+    0.8,
+    1.0,
+    1.15,
+    1.2
+  ],
+  "lambda_factor_min": 0.05,
+  "lambda_factor_max": 20.0,
+  "lambda_grid_size": 41,
+  "tau_op": 12.0,
+  "tau_loc": 4.0,
+  "main_c_bias": 0.18,
+  "c_bias_values": [
+    0.12,
+    0.18,
+    0.25
+  ],
+  "fixed_h_check": 0.3,
+  "z_alpha": 1.959963984540054,
+  "smoke": false,
+  "benchmark": false,
+  "backend_resolved": "cpu",
+  "elapsed_seconds": 954.811685943976,
+  "source_sha256": "548e586346542499cf7b0f68eeeccb7402e5b5564f1c68694128d5f31d977fe0",
+  "source_file_count": 32
+}

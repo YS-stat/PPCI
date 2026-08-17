@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ppci-conditional-mean"
+version = "0.1.0"
+description = "Conditional-mean PPCI with covariate-only bandwidth and regularization tuning"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy==1.26.4",
+  "scipy==1.13.1",
+  "pandas==2.2.2",
+  "scikit-learn==1.5.0",
+  "matplotlib==3.9.0",
+  "joblib==1.4.2",
+]
+
+[project.optional-dependencies]
+blog = ["lightgbm==4.6.0"]
+
+[tool.setuptools.packages.find]
+include = ["ppci_condmean*"]

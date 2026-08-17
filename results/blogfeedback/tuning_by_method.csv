@@ -1,0 +1,2 @@
+method,tuning_decisions,lambda_factor_mean,h_factor_mean,R_MB_mean_mean,R_GH_mean_mean,bias_score_mean_mean,bias_budget_mean_mean,pc_ratio_mean_mean,J_w_mean_mean,sw_proxy_mean_mean,op_score_mean,loc_score_mean,fallback_rate
+GH_P1_c300,2500,2747.1368100120926,1.0,2732.3628414945633,178.32097063316377,178.32097063316377,300.0,2.2387695578745133,0.1624985265016819,1.06388237140208,0.01695972719039256,0.01263174377839082,0.0

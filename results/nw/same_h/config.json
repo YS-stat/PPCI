@@ -1,0 +1,49 @@
+{
+  "output_dir": "runs/formal_nw_same_h_latest",
+  "seed": 35790,
+  "reps": 500,
+  "workers": 8,
+  "backend": "cpu",
+  "gpu_id": "auto",
+  "n": 200,
+  "N": 5000,
+  "n_pilot": 200,
+  "beta": 0.0,
+  "sigma": 1.0,
+  "A_values": [
+    2.0,
+    4.0,
+    8.0
+  ],
+  "main_A": 4.0,
+  "b_values": [
+    0.0,
+    2.0
+  ],
+  "h_values": [
+    0.08,
+    0.2,
+    0.4,
+    0.6
+  ],
+  "kernel": "matern52",
+  "lambda_factor_min": 0.05,
+  "lambda_factor_max": 20.0,
+  "lambda_grid_size": 41,
+  "tau_op": 12.0,
+  "tau_loc": 4.0,
+  "c_bias": 0.18,
+  "nw_h_min": 0.05,
+  "nw_extended_h_min": 0.02,
+  "nw_h_max": 0.8,
+  "nw_h_grid_size": 35,
+  "nw_extended_grid_size": 45,
+  "undersmooth_delta": 0.05,
+  "curve_points": 401,
+  "z_alpha": 1.959963984540054,
+  "smoke": false,
+  "backend_resolved": "cpu",
+  "elapsed_seconds": 1044.233761774376,
+  "source_sha256": "548e586346542499cf7b0f68eeeccb7402e5b5564f1c68694128d5f31d977fe0",
+  "source_file_count": 32
+}

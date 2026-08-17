@@ -1,0 +1,11 @@
+# Exact CPU-side package versions used for the formal results.
+numpy==1.26.4
+scipy==1.13.1
+pandas==2.2.2
+scikit-learn==1.5.0
+matplotlib==3.9.0
+joblib==1.4.2
+lightgbm==4.6.0
+
+# Formal GPU runs used torch==2.5.1+cu121. Install the PyTorch build matching
+# the local CUDA runtime separately from the official PyTorch package index.

@@ -1,0 +1,185 @@
+[
+  {
+    "shard": "runs/formal_income_N_cadbd_gpu1",
+    "manifest": {
+      "created_utc": "2026-08-13T07:33:20.329604+00:00",
+      "command": [
+        "experiments/run_income_unlabeled_sweep.py",
+        "--output-dir",
+        "runs/formal_income_N_cadbd_gpu1",
+        "--seed",
+        "31415",
+        "--age",
+        "70",
+        "--sex",
+        "1",
+        "--n-label",
+        "300",
+        "--n-unlab-values",
+        "500,1500,2500,3500,4500,5500,6500,7500,8500,9500,10500",
+        "--unlab-reps",
+        "17",
+        "--unlab-rep-start",
+        "0",
+        "--label-reps",
+        "20",
+        "--paired-nested",
+        "--backend",
+        "torch",
+        "--gpu-id",
+        "1"
+      ],
+      "arguments": {
+        "data": "data/census_income/census_income.npz",
+        "output_dir": "runs/formal_income_N_cadbd_gpu1",
+        "seed": 31415,
+        "age": 70,
+        "sex": 1,
+        "n_label": 300,
+        "n_unlab_values": "500,1500,2500,3500,4500,5500,6500,7500,8500,9500,10500",
+        "unlab_reps": 17,
+        "unlab_rep_start": 0,
+        "label_reps": 20,
+        "paired_nested": true,
+        "backend": "torch",
+        "gpu_id": "1",
+        "save_replicates": false,
+        "smoke": false
+      },
+      "config_sha256": "6edcfe1e28d6d42719e4f300405caad14854bf24370ebde21fbbaa86fa1c0df3",
+      "source_sha256": "cadbd8b7d3f84e630b0690c9baf0c8c99f8f38e5adeed38a645d932debb7fcc8",
+      "source_file_count": 32,
+      "runtime": {
+        "python": "3.10.12",
+        "numpy": "1.26.4",
+        "pandas": "2.2.2",
+        "scipy": "1.13.1"
+      },
+      "extra": {
+        "backend_resolved": "torch"
+      }
+    }
+  },
+  {
+    "shard": "runs/formal_income_N_cadbd_gpu2",
+    "manifest": {
+      "created_utc": "2026-08-13T07:33:21.996851+00:00",
+      "command": [
+        "experiments/run_income_unlabeled_sweep.py",
+        "--output-dir",
+        "runs/formal_income_N_cadbd_gpu2",
+        "--seed",
+        "31415",
+        "--age",
+        "70",
+        "--sex",
+        "1",
+        "--n-label",
+        "300",
+        "--n-unlab-values",
+        "500,1500,2500,3500,4500,5500,6500,7500,8500,9500,10500",
+        "--unlab-reps",
+        "17",
+        "--unlab-rep-start",
+        "17",
+        "--label-reps",
+        "20",
+        "--paired-nested",
+        "--backend",
+        "torch",
+        "--gpu-id",
+        "2"
+      ],
+      "arguments": {
+        "data": "data/census_income/census_income.npz",
+        "output_dir": "runs/formal_income_N_cadbd_gpu2",
+        "seed": 31415,
+        "age": 70,
+        "sex": 1,
+        "n_label": 300,
+        "n_unlab_values": "500,1500,2500,3500,4500,5500,6500,7500,8500,9500,10500",
+        "unlab_reps": 17,
+        "unlab_rep_start": 17,
+        "label_reps": 20,
+        "paired_nested": true,
+        "backend": "torch",
+        "gpu_id": "2",
+        "save_replicates": false,
+        "smoke": false
+      },
+      "config_sha256": "63000880e9d3f25091d7d1cde896bfe7cc05107c298969a9ce073c17eddd9a76",
+      "source_sha256": "cadbd8b7d3f84e630b0690c9baf0c8c99f8f38e5adeed38a645d932debb7fcc8",
+      "source_file_count": 32,
+      "runtime": {
+        "python": "3.10.12",
+        "numpy": "1.26.4",
+        "pandas": "2.2.2",
+        "scipy": "1.13.1"
+      },
+      "extra": {
+        "backend_resolved": "torch"
+      }
+    }
+  },
+  {
+    "shard": "runs/formal_income_N_cadbd_gpu3",
+    "manifest": {
+      "created_utc": "2026-08-13T07:32:46.801971+00:00",
+      "command": [
+        "experiments/run_income_unlabeled_sweep.py",
+        "--output-dir",
+        "runs/formal_income_N_cadbd_gpu3",
+        "--seed",
+        "31415",
+        "--age",
+        "70",
+        "--sex",
+        "1",
+        "--n-label",
+        "300",
+        "--n-unlab-values",
+        "500,1500,2500,3500,4500,5500,6500,7500,8500,9500,10500",
+        "--unlab-reps",
+        "16",
+        "--unlab-rep-start",
+        "34",
+        "--label-reps",
+        "20",
+        "--paired-nested",
+        "--backend",
+        "torch",
+        "--gpu-id",
+        "3"
+      ],
+      "arguments": {
+        "data": "data/census_income/census_income.npz",
+        "output_dir": "runs/formal_income_N_cadbd_gpu3",
+        "seed": 31415,
+        "age": 70,
+        "sex": 1,
+        "n_label": 300,
+        "n_unlab_values": "500,1500,2500,3500,4500,5500,6500,7500,8500,9500,10500",
+        "unlab_reps": 16,
+        "unlab_rep_start": 34,
+        "label_reps": 20,
+        "paired_nested": true,
+        "backend": "torch",
+        "gpu_id": "3",
+        "save_replicates": false,
+        "smoke": false
+      },
+      "config_sha256": "0695a011274be9a85a85fff5902c76a134d1b0abaf4040a84c448a6409a9712e",
+      "source_sha256": "cadbd8b7d3f84e630b0690c9baf0c8c99f8f38e5adeed38a645d932debb7fcc8",
+      "source_file_count": 32,
+      "runtime": {
+        "python": "3.10.12",
+        "numpy": "1.26.4",
+        "pandas": "2.2.2",
+        "scipy": "1.13.1"
+      },
+      "extra": {
+        "backend_resolved": "torch"
+      }
+    }
+  }
+]

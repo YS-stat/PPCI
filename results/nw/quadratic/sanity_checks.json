@@ -1,0 +1,56 @@
+{
+  "oracle": {
+    "b=0": {
+      "ORACLE_WSTAR_LO": {
+        "bias": -0.009694045848947761,
+        "empirical_variance": 0.02206043204241948,
+        "analytic_variance": 0.02439285714285714,
+        "relative_variance_error": 0.09561918420535065
+      },
+      "ORACLE_WSTAR_PPCI": {
+        "bias": -0.0046626812750441265,
+        "empirical_variance": 0.011166972810285355,
+        "analytic_variance": 0.011775714285714285,
+        "relative_variance_error": 0.05169465398522999
+      }
+    },
+    "b=2": {
+      "ORACLE_WSTAR_LO": {
+        "bias": -0.009001968145588485,
+        "empirical_variance": 0.02876374592641657,
+        "analytic_variance": 0.030821428571428573,
+        "relative_variance_error": 0.06676142996562695
+      },
+      "ORACLE_WSTAR_PPCI": {
+        "bias": -0.004644911271843802,
+        "empirical_variance": 0.011456241112771475,
+        "analytic_variance": 0.012032857142857142,
+        "relative_variance_error": 0.04792012597174011
+      }
+    }
+  },
+  "fixed_h_uniform_nw": [
+    {
+      "setting": "b=0",
+      "empirical_bias": 0.12133749146475278,
+      "empirical_sd": 0.12652611225140195,
+      "repetitions": 500,
+      "analytic_bias": 0.12,
+      "absolute_bias_error": 0.001337491464752788
+    },
+    {
+      "setting": "b=2",
+      "empirical_bias": 0.12182150227162988,
+      "empirical_sd": 0.12685287114427066,
+      "repetitions": 500,
+      "analytic_bias": 0.12,
+      "absolute_bias_error": 0.0018215022716298879
+    }
+  ],
+  "all_finite_core_outputs": true,
+  "target_is_beta": true,
+  "localization_has_signed_weights": true,
+  "elapsed_seconds": 954.811685943976,
+  "backend_resolved": "cpu",
+  "workers": 8
+}
