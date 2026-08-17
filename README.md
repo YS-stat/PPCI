@@ -1,37 +1,34 @@
 # Prediction-Powered Conditional Inference (PPCI)
 
-This repository contains the conditional-mean implementation and compact
-reproducibility artifacts for the paper
-[Prediction-Powered Conditional Inference](https://arxiv.org/pdf/2603.05575).
-It includes the controlled Simulation, Census Income, and BlogFeedback
-experiments, together with the PPCI++ predictor-quality study, the
-unlabeled-sample-size study, the two-fold versus no-split comparison, and the
-Nadaraya--Watson (NW) localization studies.
+This repository provides the conditional-mean implementation and compact
+reproducibility artifacts for
+[Prediction-Powered Conditional Inference](https://arxiv.org/pdf/2603.05575),
+including the Simulation, Census Income, BlogFeedback, PPCI++, split/no-split,
+unlabeled-sample-size, and Nadaraya--Watson (NW) studies.
 
 ## Method
 
-For each candidate bandwidth `h` and regularization level `lambda`, PPCI
-constructs an empirical RKHS localization weight using covariates only. The
-paper-facing tuning rule applies the operator and local-leverage stability
-screens and the P1 labeled-scale bias screen
+For each candidate bandwidth `h` and regularization level `lambda`, PPCI builds
+an empirical RKHS localization weight from covariates. Tuning applies the
+operator and local-leverage stability screens and the P1 labeled-scale bias
+screen
 
 ```text
 sqrt(n * lambda * [D_hat_h(x0; lambda) - Q_hat_h(x0; lambda)]_+
      / Q_hat_h(x0; lambda)) <= c_bias.
 ```
 
-Among feasible candidates, the procedure minimizes
-`sqrt(Q_hat_h) / abs(mean(w_hat))`. If the feasible set is empty, it selects
-the candidate with the smallest normalized constraint violation and uses the
-same scale proxy as a tie-breaker. The candidate grids are
+Among feasible candidates, PPCI minimizes
+`sqrt(Q_hat_h) / abs(mean(w_hat))`. If none is feasible, it minimizes normalized
+constraint violation, using that scale proxy as a tie-breaker. The grids are
 
 ```text
 h = a * median_u ||X_tilde_u - x0||,
 lambda = c / {n * log(log(n + exp(exp(1))))}.
 ```
 
-The tuning step never uses outcomes or predictions. These enter only after
-`(h, lambda)` and the two fold-specific localization weights have been fixed.
+Outcomes and predictions enter only after `(h, lambda)` and both fold-specific
+weights have been fixed.
 
 ## Repository Layout
 
@@ -46,15 +43,12 @@ tests/               deterministic unit and smoke tests
 tools/               result merging, calibration, and target-rescoring tools
 ```
 
-Large kernel matrices, eigensystems, fitted weight vectors, and paper-scale
-replicate tables are intentionally excluded.
+Paper-scale matrices, fitted weights, and replicate tables are excluded.
 
 ## Installation
 
-The formal results used Python 3.10.12 with NumPy 1.26.4, SciPy 1.13.1,
-Pandas 2.2.2, scikit-learn 1.5.0, Matplotlib 3.9.0, Joblib 1.4.2,
-LightGBM 4.6.0, and PyTorch 2.5.1 with CUDA 12.1. Install the CPU dependencies
-with
+The exact CPU environment is pinned in `requirements.txt`; formal GPU runs used
+Python 3.10.12 and PyTorch 2.5.1 with CUDA 12.1. Install with
 
 ```bash
 python -m venv .venv
@@ -63,13 +57,12 @@ pip install -r requirements.txt
 pip install -e .
 ```
 
-PyTorch is optional. For GPU execution, install the PyTorch build matching the
-local CUDA runtime and pass `--backend cuda --gpu-id 0`. CPU execution uses
-NumPy and SciPy.
+PyTorch is optional. For GPU execution, install a build matching local CUDA and
+pass `--backend cuda --gpu-id 0`.
 
 ## Verification
 
-Run the deterministic test suite and short CPU smoke experiments with
+Run the deterministic tests and main CPU smoke experiments with
 
 ```bash
 python -m unittest discover -s tests -v
@@ -79,25 +72,17 @@ python experiments/run_income.py --smoke --backend cpu \
   --output-dir runs/smoke_income
 python experiments/run_blogfeedback.py --smoke --model extratrees \
   --backend cpu --output-dir runs/smoke_blog
-python experiments/run_split_comparison.py --smoke --backend cpu \
-  --output-dir runs/smoke_split
-python experiments/run_income_unlabeled_sweep.py --smoke --backend cpu \
-  --output-dir runs/smoke_income_N
-python experiments/nw/run_nw_mechanism_analytic.py \
-  --output-dir runs/smoke_nw_analytic
-python experiments/nw/run_nw_localization_quadratic_mc.py --smoke --workers 1 \
-  --backend cpu --output-dir runs/smoke_nw_mc
 ```
 
-The release passes all 17 tests in the formal server environment, including
-CPU/CUDA parity. The CUDA test is skipped automatically when CUDA is absent.
+The appendix entry points also support short runs. All 17 tests pass in the
+formal server environment, including CPU/CUDA parity; CUDA tests skip when
+CUDA is unavailable.
 
 ## Main Paper Configurations
 
-Each main experiment uses 50 independent unlabeled samples and 20 independent
-labeled samples per unlabeled sample, yielding 1,000 confidence intervals and
-50 independent unlabeled clusters per target point. Coverage Monte Carlo
-standard errors are computed across those clusters.
+Each main experiment uses 50 independent unlabeled samples and 20 labeled
+draws per sample: 1,000 intervals and 50 clusters per target point. Coverage
+Monte Carlo standard errors use those clusters.
 
 | Experiment | `(n, N, targets)` | `C_h` | `C_lambda` | `(c_op, c_loc, c_bias)` |
 |---|---:|---|---|---:|
@@ -106,13 +91,11 @@ standard errors are computed across those clusters.
 | Income, sex 2 | `(300, 10000, 31)` | `1.0,1.2,1.4` | 41 log points in `[0.1,1000]` | `(10,3,15)` |
 | BlogFeedback | `(300, 10000, 50)` | `0.8,0.9,1.0` | 81 log points in `[0.1,10000]` | `(12,4,300)` |
 
-The Simulation target grid is the `7^3` Cartesian grid on `[0.70,0.85]^3`.
-It uses the fixed deployable predictor
+Simulation uses the `7^3` grid on `[0.70,0.85]^3` and the fixed predictor
 `f_q(X) = q m(X) + (1-q) s(X)`, where
-`s(X) = sqrt(1.5825) sin(6 pi X_1)` and `q=0.9`; predictions never read the
-response. BlogFeedback trains LightGBM on a split disjoint from the inference
-population, and its empirical reference target is defined on that same held-out
-inference population.
+`s(X) = sqrt(1.5825) sin(6 pi X_1)` and `q=0.9`. BlogFeedback trains LightGBM
+outside the held-out inference population, which also defines its reference
+target.
 
 ### Simulation
 
@@ -135,8 +118,6 @@ Use `--x0-indices` to shard the 343 target indices across devices and merge
 the completed shards with `tools/merge_simulation_shards.py`.
 
 ### Census Income
-
-Sex 1 and sex 2 use separately predeclared stability and bias constants.
 
 ```bash
 python experiments/run_income.py --sexes 1 --seed 15100 \
@@ -170,10 +151,9 @@ python experiments/run_blogfeedback.py \
 
 ## Additional Experiments
 
-The predictor-quality experiment compares PPCI, PPCI++, LO, and global PPI at
-`q in {0.9,0.5,0}` with `n=500`, `N=10000`, eight target points, and the same
-normal critical value for PPCI and PPCI++. PPCI++ estimates a point-specific,
-labeled-cross-fitted coefficient `omega(x0)` and clips it to `[0,1]`.
+The predictor-quality study compares PPCI, PPCI++, LO, and global PPI at
+`q in {0.9,0.5,0}` with `n=500`, `N=10000`, and eight targets. PPCI++ uses a
+point-specific, labeled-cross-fitted `omega(x0)` clipped to `[0,1]`.
 
 ```bash
 python experiments/run_simulation.py \
@@ -184,10 +164,8 @@ python experiments/run_simulation.py \
   --include-ppci-plus --omega-folds 5 --backend cuda
 ```
 
-The other appendix studies use `experiments/run_split_comparison.py`,
-`experiments/run_income_unlabeled_sweep.py`, and the scripts under
-`experiments/nw/`. Their compact outputs and exact configurations are archived
-under `results/`.
+Other appendix entry points cover split/no-split, unlabeled-sample-size, and NW
+studies; exact configurations and compact outputs are under `results/`.
 
 ## Validated Main Results
 
@@ -207,18 +185,14 @@ targets.
 
 ## Results and Provenance
 
-See [`results/README.md`](results/README.md) for the compact file map and
-[`RESULTS_SCHEMA.md`](RESULTS_SCHEMA.md) for metric definitions. Every formal
-shard manifest records the command, full arguments, runtime versions,
-configuration SHA-256, and executable-source SHA-256. All included formal
-results share the full server-archive source fingerprint
+See [`results/README.md`](results/README.md) for the file map and
+[`RESULTS_SCHEMA.md`](RESULTS_SCHEMA.md) for metric definitions. Manifests
+record commands, arguments, runtime versions, and configuration/source hashes.
+All formal results share source fingerprint
 
 ```text
 cadbd8b7d3f84e630b0690c9baf0c8c99f8f38e5adeed38a645d932debb7fcc8
 ```
 
-The core algorithm and experiment entry points in this public package are
-byte-identical to the corresponding files in that archive. Documentation and
-compact-result packaging were updated after the formal runs, while obsolete
-internal schedulers and archival utilities were omitted from the public
-release.
+Core algorithm and experiment files are byte-identical to the server archive;
+internal schedulers and large archival outputs are omitted.
