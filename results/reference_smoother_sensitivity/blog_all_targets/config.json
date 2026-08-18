@@ -1,0 +1,19 @@
+{
+  "dataset": "blogfeedback",
+  "data": "data/blogfeedback/blogfeedback.zip",
+  "output_dir": "runs/reference_smoother_sensitivity/blog_all_targets",
+  "replicate_files": [],
+  "formal_summary_file": "results/blogfeedback/summary_by_x0.csv",
+  "income_sexes": "1,2",
+  "income_ages": "70,80,90,100",
+  "blog_x0_indices": "0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49",
+  "seed": 2025,
+  "n_blog_x0": 50,
+  "ppci_fraction": 0.3,
+  "reference_order": [
+    "matern52_0.8h0",
+    "matern52_h0",
+    "matern52_1.2h0",
+    "gaussian_ess_matched"
+  ]
+}

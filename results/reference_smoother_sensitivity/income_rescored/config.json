@@ -1,0 +1,21 @@
+{
+  "dataset": "income",
+  "data": "data/census_income/census_income.npz",
+  "output_dir": "runs/reference_smoother_sensitivity/income_rescored",
+  "replicate_files": [
+    "runs/reference_smoother_sensitivity/income_sex1_gpu0/replicates.csv",
+    "runs/reference_smoother_sensitivity/income_sex2_gpu1/replicates.csv"
+  ],
+  "income_sexes": "1,2",
+  "income_ages": "70,80,90,100",
+  "blog_x0_indices": "0,7,14,21,28,35,42,49",
+  "seed": 2025,
+  "n_blog_x0": 50,
+  "ppci_fraction": 0.3,
+  "reference_order": [
+    "matern52_0.8h0",
+    "matern52_h0",
+    "matern52_1.2h0",
+    "gaussian_ess_matched"
+  ]
+}

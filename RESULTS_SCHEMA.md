@@ -18,6 +18,19 @@ The optional `replicates.csv` is written only when `--save-replicates` is
 specified. It is needed for paired rescoring or diagnostics, not for the main
 figures.
 
+## Reference-smoother sensitivity
+
+- `reference_targets.csv`: alternative finite-population reference targets,
+  kernel bandwidths, and kernel-weight effective sample sizes.
+- `target_shifts.csv` and `target_shift_summary.csv`: signed and absolute
+  changes relative to the Matérn-5/2 reference at `h0`.
+- `rescored_by_target.csv` and `rescored_aggregate.csv`: representative-target
+  coverage, bias, RMSE, and width after changing only the evaluation target.
+- `formal_rescored_by_target.csv` and `formal_rescored_aggregate.csv`:
+  all-target bias, RMSE, and width reconstructed from the formal 1,000-run
+  summaries. Width is invariant across reference targets because the intervals
+  themselves are held fixed.
+
 ## Accuracy and uncertainty
 
 - `coverage`: empirical fraction of intervals containing the evaluation target.

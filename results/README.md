@@ -28,6 +28,8 @@ matrices, eigensystems, and fitted weight vectors are intentionally omitted.
   memory summaries.
 - `simulation/sensitivity/`: P1 `c_bias`, upper-bandwidth, and lambda-envelope
   sensitivity summaries.
+- `reference_smoother_sensitivity/`: Income and BlogFeedback rescoring under
+  Matérn-5/2 bandwidth perturbations and an ESS-matched Gaussian reference.
 - `nw/`: compact analytic, quadratic-mechanism, and same-bandwidth NW/RKHS
   localization summaries.
 

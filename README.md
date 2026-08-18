@@ -4,7 +4,8 @@ This repository provides the conditional-mean implementation and compact
 reproducibility artifacts for
 [Prediction-Powered Conditional Inference](https://arxiv.org/pdf/2603.05575),
 including the Simulation, Census Income, BlogFeedback, PPCI++, split/no-split,
-unlabeled-sample-size, and Nadaraya--Watson (NW) studies.
+unlabeled-sample-size, reference-smoother sensitivity, and Nadaraya--Watson
+(NW) studies.
 
 ## Method
 
@@ -165,7 +166,11 @@ python experiments/run_simulation.py \
 ```
 
 Other appendix entry points cover split/no-split, unlabeled-sample-size, and NW
-studies; exact configurations and compact outputs are under `results/`.
+studies. The real-data reference-smoother sensitivity holds the estimators and
+intervals fixed while changing only the finite-population evaluation target;
+its code and compact outputs are in
+[`results/reference_smoother_sensitivity/`](results/reference_smoother_sensitivity/).
+Exact configurations and compact outputs for all studies are under `results/`.
 
 ## Validated Main Results
 

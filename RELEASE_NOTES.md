@@ -15,6 +15,8 @@ updates:
 - point-specific, labeled-cross-fitted PPCI++ with one normal-Wald interval;
 - Income unlabeled-sample-size, two-fold/no-split, tuning-sensitivity, and
   NW/RKHS-localization experiments;
+- Income and BlogFeedback reference-smoother sensitivity, including Matérn
+  bandwidth perturbations and an ESS-matched Gaussian reference;
 - compact plot-ready results, exact shard manifests, six final PDF figures,
   and the formal server package versions.
 
